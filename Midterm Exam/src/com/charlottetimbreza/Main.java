@@ -65,45 +65,57 @@ public class Main {
         return random.nextInt(max);
     }
 
+    public static void printDrawCommand (CardStack deck, CardStack hand, int numOfCards) {
+        System.out.println("Draw " + numOfCards + " cards");
+        System.out.println("Drew the following card/s: ");
+        if (numOfCards > deck.size())
+            numOfCards = deck.size();
+        for(int i = 0; i < numOfCards; i++) {
+            Card currentCard = deck.pop();
+            System.out.println(currentCard + " ");
+            hand.push(currentCard);
+        }
+        System.out.println("(Drew " + numOfCards + " cards)");
+    }
+
+    public static void printDiscardCommand (CardStack hand, CardStack discardPile, int numOfCards) {
+        System.out.println("Discard " + numOfCards + " cards");
+        System.out.println("Discarded the following card/s: ");
+        if (numOfCards > hand.size())
+            numOfCards = hand.size();
+        for(int i = 0; i < numOfCards; i++) {
+            Card currentCard = hand.pop();
+            System.out.println(currentCard + " ");
+            discardPile.push(currentCard);
+        }
+        System.out.println("(Discarded " + numOfCards + " cards)");
+    }
+
+    public static void printRetrieveCommand (CardStack hand, CardStack discardPile, int numOfCards) {
+        System.out.println("Get " + numOfCards + " cards from the discard pile.");
+        System.out.println("Got the following card/s form the discard pile: ");
+        if (numOfCards > discardPile.size())
+            numOfCards = discardPile.size();
+        for(int i = 0; i < numOfCards; i++) {
+            Card currentCard = discardPile.pop();
+            System.out.println(currentCard + " ");
+            hand.push(currentCard);
+        }
+        System.out.println("(Retrieved " + numOfCards + " cards)");
+    }
+
     public static void printRandomCommand (CardStack deck, CardStack hand, CardStack discardPile) {
 
         int rng = getRandomInt(2);
         int numOfCards = getRandomInt(4) + 1;
         if (rng == 0) {
-            System.out.println("Draw " + numOfCards + " cards");
-            System.out.println("Drew the following card/s: ");
-            if (numOfCards > deck.size())
-                numOfCards = deck.size();
-            for(int i = 0; i < numOfCards; i++) {
-                Card currentCard = deck.pop();
-                System.out.println(currentCard + " ");
-                hand.push(currentCard);
-            }
-            System.out.println("(Drew " + numOfCards + " cards)");
+            printDrawCommand(deck, hand, numOfCards);
         }
         else if (rng == 1) {
-            System.out.println("Discard " + numOfCards + " cards");
-            System.out.println("Discarded the following card/s: ");
-            if (numOfCards > hand.size())
-                numOfCards = hand.size();
-            for(int i = 0; i < numOfCards; i++) {
-                Card currentCard = hand.pop();
-                System.out.println(currentCard + " ");
-                discardPile.push(currentCard);
-            }
-            System.out.println("(Discarded " + numOfCards + " cards)");
+            printDiscardCommand(hand, discardPile, numOfCards);
         }
         else if (rng == 2) {
-            System.out.println("Get " + numOfCards + " cards from the discard pile.");
-            System.out.println("Got the following card/s form the discard pile: ");
-            if (numOfCards > discardPile.size())
-                numOfCards = discardPile.size();
-            for(int i = 0; i < numOfCards; i++) {
-                Card currentCard = discardPile.pop();
-                System.out.println(currentCard + " ");
-                hand.push(currentCard);
-            }
-            System.out.println("(Retrieved " + numOfCards + " cards)");
+            printRetrieveCommand(hand, discardPile, numOfCards);
         }
     }
 
