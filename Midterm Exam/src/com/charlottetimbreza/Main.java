@@ -72,7 +72,7 @@ public class Main {
             numOfCards = deck.size();
         for(int i = 0; i < numOfCards; i++) {
             Card currentCard = deck.pop();
-            System.out.println(currentCard + " ");
+            System.out.println(currentCard.getName() + " ");
             hand.push(currentCard);
         }
         System.out.println("(Drew " + numOfCards + " cards)");
@@ -85,7 +85,7 @@ public class Main {
             numOfCards = hand.size();
         for(int i = 0; i < numOfCards; i++) {
             Card currentCard = hand.pop();
-            System.out.println(currentCard + " ");
+            System.out.println(currentCard.getName() + " ");
             discardPile.push(currentCard);
         }
         System.out.println("(Discarded " + numOfCards + " cards)");
@@ -98,7 +98,7 @@ public class Main {
             numOfCards = discardPile.size();
         for(int i = 0; i < numOfCards; i++) {
             Card currentCard = discardPile.pop();
-            System.out.println(currentCard + " ");
+            System.out.println(currentCard.getName() + " ");
             hand.push(currentCard);
         }
         System.out.println("(Retrieved " + numOfCards + " cards)");

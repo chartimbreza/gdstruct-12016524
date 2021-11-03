@@ -27,7 +27,7 @@ public class CardStack {
         ListIterator<Card> iterator = stack.listIterator();
         System.out.println("Printing " + name + ": ");
         while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+            System.out.println(iterator.next().getName());
         }
     }
 }
