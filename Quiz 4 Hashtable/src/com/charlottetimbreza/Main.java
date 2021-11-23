@@ -19,8 +19,8 @@ public class Main {
 
         hashtable.printHashtable();
         System.out.println(hashtable.get("Surbroza"));
-        hashtable.yeet("Surbroza");
-        hashtable.yeet("TSM Wardell");
+        hashtable.remove("Surbroza");
+        hashtable.remove("TSM Wardell");
         System.out.println(hashtable.get("Surbroza"));
         hashtable.printHashtable();
     }

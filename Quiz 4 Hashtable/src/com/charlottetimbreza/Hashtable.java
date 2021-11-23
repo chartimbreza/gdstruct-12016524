@@ -115,7 +115,7 @@ public class Hashtable {
     }
 
     //supposed remove function
-    public void yeet(String key)
+    public void remove(String key)
     {
         int index = findKey(key);
         hashtable[index] = null;
