@@ -7,13 +7,16 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         ArrayQueue matchmakingQueue = new ArrayQueue(7);
-        int gameStarted = 0;
+        int gameCounter = 0;
 
-        while (gameStarted < 10) {
+        while (gameCounter < 10) {
             addToMatchmaking(matchmakingQueue);
             printPauseTurn();
-            if(matchmakingQueue.size() >= 5)
-                startGame(gameStarted, matchmakingQueue);
+            if(matchmakingQueue.size() >= 5) {
+                gameCounter++;
+                System.out.println("Game " + gameCounter + " has started with the following players!")
+                startGame( matchmakingQueue);
+            }
             System.out.println("\nMatchmaking Queue");
             matchmakingQueue.printQueue();
             System.out.print("\n");
@@ -43,9 +46,7 @@ public class Main {
         }
     }
 
-    public static void startGame(int gameCounter, ArrayQueue arrayQueue) {
-        gameCounter++;
-        System.out.println("Game " + gameCounter + " has started with the following players!");
+    public static void startGame(ArrayQueue arrayQueue) {
         for (int i = 0; i < 5; i++) {
             System.out.println(arrayQueue.peek());
             arrayQueue.remove();
